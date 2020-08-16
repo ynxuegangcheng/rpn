@@ -1,0 +1,57 @@
+package com.xgc.rpn.user.operate;
+
+import com.xgc.rpn.record.OperateRecord;
+import com.xgc.rpn.user.enums.OperatorsEnum;
+import com.xgc.rpn.user.useraction.UserAction;
+import com.xgc.rpn.container.Container;
+
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * 开放计算实现类
+ *
+ * @author xgc
+ * @Date 2020/8/16
+ */
+public class SquareRoot implements UserAction {
+
+    @Override
+    public void execute(Container container) {
+        double first = container.popNum();
+        if (first >= 0) {
+            double result = Math.sqrt(first);
+            container.pushNum(result);
+            OperateRecord record = this.getOperationRecord(first);
+            container.pushOperateRecord(record);
+        }
+        else {
+            container.pushNum(first);
+            System.err.println("Square root cannot be applied to " );
+        }
+    }
+
+    /**
+     * 获取操作类型
+     *
+     * @author xgc
+     * @Date 2020/8/16
+     */
+    public OperateRecord getOperationRecord(double digit) {
+        List<Double> params = Arrays.asList(digit);
+        return new OperateRecord(params, this);
+    }
+
+    @Override
+    public String getEmptyStackErrorMessage(int counter) {
+        StringBuilder stringBuilder = new StringBuilder("Operator: ");
+
+        stringBuilder.append(OperatorsEnum.SQUAREROOT.getCode());
+
+        stringBuilder.append(" (position: ");
+        stringBuilder.append(counter * 2 - 1);
+        stringBuilder.append("): insucient parameters");
+
+        return stringBuilder.toString();
+    }
+}

@@ -1,0 +1,56 @@
+package com.xgc.rpn.user.operate;
+
+import com.xgc.rpn.record.OperateRecord;
+import com.xgc.rpn.user.enums.OperatorsEnum;
+import com.xgc.rpn.user.useraction.UserAction;
+import com.xgc.rpn.container.Container;
+
+import java.util.*;
+import java.util.function.Consumer;
+
+/**
+ * 清除操作实现类
+ *
+ * @author xgc
+ * @Date 2020/8/16
+ */
+public class Clear implements UserAction {
+    @Override
+    public void execute(Container container) {
+        List<Double> elements = new ArrayList<Double>();
+        Double digit;
+
+        try {
+            while (null != (digit = container.popNum())) {
+                elements.add(digit);
+            }
+        }
+        catch (EmptyStackException e) {
+            //Reached the end of stack
+            Consumer<OperateRecord> consumer = record -> container.pushOperateRecord(record);
+            Optional<OperateRecord> record = this.getOperationRecord(elements);
+            record.ifPresent(consumer);
+        }
+    }
+
+    public Optional<OperateRecord> getOperationRecord(List<Double> elements) {
+        if (elements != null && elements.size() != 0) {
+            Collections.reverse(elements);
+            return Optional.of(new OperateRecord(elements, this));
+        }
+        return Optional.empty();
+    }
+
+    @Override
+    public String getEmptyStackErrorMessage(int counter) {
+        StringBuilder stringBuilder = new StringBuilder("Operator: ");
+
+        stringBuilder.append(OperatorsEnum.CLEAR.getCode());
+
+        stringBuilder.append(" (position: ");
+        stringBuilder.append(counter * 2 - 1);
+        stringBuilder.append("): insucient parameters");
+
+        return stringBuilder.toString();
+    }
+}
