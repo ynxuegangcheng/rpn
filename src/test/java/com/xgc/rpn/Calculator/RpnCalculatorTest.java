@@ -1,5 +1,6 @@
-package com.xgc.rpn;
+package com.xgc.rpn.Calculator;
 
+import com.xgc.rpn.Calculator.RpnCalculator;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;

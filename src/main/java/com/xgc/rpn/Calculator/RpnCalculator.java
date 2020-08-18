@@ -1,7 +1,8 @@
-package com.xgc.rpn;
+package com.xgc.rpn.Calculator;
 
-import com.xgc.rpn.container.Container;
-import com.xgc.rpn.container.ContainerImpl;
+import com.xgc.rpn.Calculator.container.Container;
+import com.xgc.rpn.Calculator.container.ContainerImpl;
+import com.xgc.rpn.Calculator.operate.OperateFactory;
 import com.xgc.rpn.user.useraction.UserAction;
 import com.xgc.rpn.user.userenter.UserEnter;
 import com.xgc.rpn.user.userenter.UserEnterImpl;
@@ -22,6 +23,7 @@ public class RpnCalculator {
     private static final int ONE = 1;
     private UserEnter userEnter;
     private Container container;
+    private OperateFactory operateFactory;
 
     public RpnCalculator() {
         this(System.in);
@@ -34,6 +36,11 @@ public class RpnCalculator {
 
         this.userEnter = new UserEnterImpl(in);
         this.container = new ContainerImpl();
+        this.operateFactory = new OperateFactory();
+    }
+
+    public OperateFactory getOperateFactory() {
+        return operateFactory;
     }
 
     /**

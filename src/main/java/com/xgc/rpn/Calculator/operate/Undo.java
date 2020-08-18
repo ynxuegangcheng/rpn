@@ -1,9 +1,9 @@
-package com.xgc.rpn.user.operate;
+package com.xgc.rpn.Calculator.operate;
 
-import com.xgc.rpn.record.OperateRecord;
-import com.xgc.rpn.user.enums.OperatorsEnum;
+import com.xgc.rpn.Calculator.operate.record.OperateRecord;
+import com.xgc.rpn.Calculator.operate.enums.OperatorsEnum;
 import com.xgc.rpn.user.useraction.UserAction;
-import com.xgc.rpn.container.Container;
+import com.xgc.rpn.Calculator.container.Container;
 import java.util.function.Predicate;
 
 /**

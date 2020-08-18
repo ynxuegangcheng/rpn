@@ -1,7 +1,7 @@
 package com.xgc.rpn.user.userenter;
 
+import com.xgc.rpn.Calculator.RpnCalculator;
 import com.xgc.rpn.user.useraction.UserAction;
-import com.xgc.rpn.user.operate.OperateFactory;
 import com.xgc.rpn.user.useraction.UserActionImpl;
 
 import java.io.InputStream;
@@ -32,7 +32,6 @@ public class UserEnterImpl implements UserEnter{
     @Override
     public List<UserAction> getUserInput() {
         List<UserAction> userActions = new ArrayList<UserAction>();
-        // User interactive mode
         String userEntered = scanner.nextLine();
         if (userEntered != null && userEntered.length() != 0) {
             String[] strings = userEntered.split(UserEnter.SPACE);
@@ -65,7 +64,7 @@ public class UserEnterImpl implements UserEnter{
         Optional<UserAction> userEntry = Optional.empty();
 
         try {
-            userEntry = OperateFactory.getOperator(userEntered);
+            userEntry = new RpnCalculator().getOperateFactory().getOperator(userEntered);
         }
         catch (Exception e) {
             e.printStackTrace();
