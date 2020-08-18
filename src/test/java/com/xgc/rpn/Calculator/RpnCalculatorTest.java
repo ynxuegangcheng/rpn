@@ -1,6 +1,5 @@
 package com.xgc.rpn.Calculator;
 
-import com.xgc.rpn.Calculator.RpnCalculator;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
@@ -120,7 +119,7 @@ public class RpnCalculatorTest {
      */
     @Test
     public void doCalculateTest5() {
-        String input = "7 12 2 /\r" + "*\r" + "4 /\r";
+        String input = "7 12 2 /\r" + "*\r" + "4 /";
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(bos));
         try {
@@ -145,7 +144,7 @@ public class RpnCalculatorTest {
      */
     @Test
     public void doCalculateTest6() {
-        String input = "1 2 3 4 5\r" + "*\r" + "clear 3 4 -\r";
+        String input = "1 2 3 4 5\r" + "*\r" + "clear 3 4 -";
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(bos));
         try {
@@ -170,7 +169,7 @@ public class RpnCalculatorTest {
      */
     @Test
     public void doCalculateTest7() {
-        String input = "1 2 3 4 5\r" + "* * * *\r";
+        String input = "1 2 3 4 5\r" + "* * * *";
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(bos));
         try {
