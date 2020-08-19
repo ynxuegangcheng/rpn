@@ -29,13 +29,10 @@ public class Division extends Operate{
     @Override
     public String getEmptyStackErrorMessage(int counter) {
         StringBuilder stringBuilder = new StringBuilder("Operator: ");
-
         stringBuilder.append(OperatorsEnum.DIVISION.getCode());
-
         stringBuilder.append(" (position: ");
         stringBuilder.append(counter * 2 - 1);
         stringBuilder.append("): insucient parameters");
-
         return stringBuilder.toString();
     }
 }
