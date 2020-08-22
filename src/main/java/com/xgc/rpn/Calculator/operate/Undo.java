@@ -2,7 +2,7 @@ package com.xgc.rpn.Calculator.operate;
 
 import com.xgc.rpn.Calculator.operate.record.OperateRecord;
 import com.xgc.rpn.Calculator.operate.enums.OperatorsEnum;
-import com.xgc.rpn.user.useraction.UserAction;
+import com.xgc.rpn.Calculator.action.Action;
 import com.xgc.rpn.Calculator.container.Container;
 import java.util.function.Predicate;
 
@@ -12,12 +12,12 @@ import java.util.function.Predicate;
  * @author xgc
  * @Date 2020/8/16
  */
-public class Undo implements UserAction {
+public class Undo implements Action {
     @Override
     public void execute(Container container) {
         OperateRecord record = container.popOperationRecord();
 
-        UserAction operator = record.getUserAction();
+        Action operator = record.getUserAction();
         if (isNeedClearUpResult().test(operator)) {
             container.popNum();
         }
@@ -28,7 +28,7 @@ public class Undo implements UserAction {
         }
     }
 
-    public static Predicate<UserAction> isNeedClearUpResult() {
+    private static Predicate<Action> isNeedClearUpResult() {
         return e -> ((null == e) || (!(e instanceof Clear)));
     }
 

@@ -1,9 +1,9 @@
 package com.xgc.rpn.Calculator.operate;
 
+import com.xgc.rpn.Calculator.container.Container;
 import com.xgc.rpn.Calculator.operate.record.OperateRecord;
 import com.xgc.rpn.Calculator.operate.enums.OperatorsEnum;
-import com.xgc.rpn.user.useraction.UserAction;
-import com.xgc.rpn.Calculator.container.Container;
+import com.xgc.rpn.Calculator.action.Action;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -14,7 +14,7 @@ import java.util.function.Consumer;
  * @author xgc
  * @Date 2020/8/16
  */
-public class Clear implements UserAction {
+public class Clear implements Action {
     @Override
     public void execute(Container container) {
         List<Double> elements = new ArrayList<Double>();

@@ -1,4 +1,4 @@
-package com.xgc.rpn.user.useraction;
+package com.xgc.rpn.Calculator.action;
 
 import com.xgc.rpn.Calculator.container.Container;
 
@@ -8,7 +8,7 @@ import com.xgc.rpn.Calculator.container.Container;
  * @author xgc
  * @Date 2020/8/16
  */
-public interface UserAction {
+public interface Action {
     /**
      * 执行操作
      *

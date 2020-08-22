@@ -1,5 +1,6 @@
-package com.xgc.rpn.user.useraction;
+package com.xgc.rpn.Calculator.action;
 
+import com.xgc.rpn.Calculator.container.ContainerImpl;
 import com.xgc.rpn.Calculator.operate.record.OperateRecord;
 import com.xgc.rpn.Calculator.container.Container;
 
@@ -13,11 +14,11 @@ import java.util.function.Function;
  * @author xgc
  * @Date 2020/8/16
  */
-public class UserActionImpl implements UserAction{
+public class ActionImpl implements Action {
 
     private final double num;
 
-    public UserActionImpl(String userEntered) {
+    public ActionImpl(String userEntered) {
         this.num = new Double(userEntered);
     }
 
@@ -34,7 +35,7 @@ public class UserActionImpl implements UserAction{
      * @author xgc
      * @Date 2020/8/16
      */
-    public static Function<Double, OperateRecord> toOperateRecord() {
+    private static Function<Double, OperateRecord> toOperateRecord() {
         return d -> {
             List<Double> params = Arrays.asList(d);
             return new OperateRecord(params, null);

@@ -1,7 +1,7 @@
 package com.xgc.rpn.Calculator.operate;
 
 import com.xgc.rpn.Calculator.operate.record.OperateRecord;
-import com.xgc.rpn.user.useraction.UserAction;
+import com.xgc.rpn.Calculator.action.Action;
 import com.xgc.rpn.Calculator.container.Container;
 
 import java.util.Arrays;
@@ -14,7 +14,7 @@ import java.util.List;
  * @author xgc
  * @Date 2020/8/16
  */
-public abstract class Operate implements UserAction {
+public abstract class Operate implements Action {
     private static final int TWO = 2;
 
     /**

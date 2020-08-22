@@ -1,12 +1,12 @@
 package com.xgc.rpn.Calculator.operate.record;
 
-import com.xgc.rpn.user.useraction.UserAction;
+import com.xgc.rpn.Calculator.action.Action;
 import java.util.List;
 
 
 public class OperateRecord {
     private List<Double> parameters;
-    private UserAction userAction;
+    private Action userAction;
 
     /**
      * 获取输入参数
@@ -24,7 +24,7 @@ public class OperateRecord {
      * @author xgc
      * @Date 2020/8/16
      */
-    public UserAction getUserAction() {
+    public Action getUserAction() {
         return userAction;
     }
 
@@ -34,7 +34,7 @@ public class OperateRecord {
      * @author xgc
      * @Date 2020/8/16
      */
-    public OperateRecord(List<Double> parameters, UserAction userAction) {
+    public OperateRecord(List<Double> parameters, Action userAction) {
         if (parameters.isEmpty()) {
             throw new IllegalArgumentException("parameters cannot be null！");
         }

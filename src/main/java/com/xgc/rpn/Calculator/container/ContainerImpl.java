@@ -1,7 +1,6 @@
 package com.xgc.rpn.Calculator.container;
 
 import com.xgc.rpn.Calculator.operate.record.OperateRecord;
-import com.xgc.rpn.user.userenter.UserEnter;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -16,6 +15,7 @@ import java.util.Stack;
  * @Date 2020/8/13
  */
 public class ContainerImpl implements Container{
+    private static final String SPACE = " ";
     private Stack<Double> numStack = new Stack<Double>();
     private Stack<OperateRecord> history = new Stack<OperateRecord>();
 
@@ -35,7 +35,7 @@ public class ContainerImpl implements Container{
         List<Double> nums = new ArrayList<Double>(this.numStack);
         for (Double num : nums) {
             System.out.print(format(num));
-            System.out.print(UserEnter.SPACE);
+            System.out.print(SPACE);
         }
         System.out.print("\n");
     }

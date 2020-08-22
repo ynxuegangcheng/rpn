@@ -1,6 +1,6 @@
 package com.xgc.rpn.Calculator.operate;
 
-import com.xgc.rpn.user.useraction.UserAction;
+import com.xgc.rpn.Calculator.action.Action;
 import com.xgc.rpn.Calculator.operate.enums.OperatorsEnum;
 
 import java.util.Optional;
@@ -13,14 +13,28 @@ import java.util.Optional;
  */
 public class OperateFactory {
 
+    private static final OperateFactory operateFactory = new OperateFactory();
+
+    private OperateFactory(){}
+
+    /**
+     * OperateFactory外部访问接口
+     *
+     * @author xgc
+     * @Date 2020/8/16
+     */
+    public static OperateFactory getOperateFactory() {
+        return operateFactory;
+    }
+
     /**
      * 获取操作类型
      *
      * @author xgc
      * @Date 2020/8/16
      */
-    public Optional<UserAction> getOperator(final String userEntered) {
-        Optional<UserAction> userEntry = Optional.empty();
+    public Optional<Action> getOperator(final String userEntered) {
+        Optional<Action> userEntry = Optional.empty();
         try {
             OperatorsEnum operator = OperatorsEnum.fromString(userEntered);
             switch (operator) {

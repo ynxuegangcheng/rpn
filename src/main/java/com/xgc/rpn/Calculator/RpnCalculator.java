@@ -2,10 +2,8 @@ package com.xgc.rpn.Calculator;
 
 import com.xgc.rpn.Calculator.container.Container;
 import com.xgc.rpn.Calculator.container.ContainerImpl;
-import com.xgc.rpn.Calculator.operate.OperateFactory;
-import com.xgc.rpn.user.useraction.UserAction;
+import com.xgc.rpn.Calculator.action.Action;
 import com.xgc.rpn.user.userenter.UserEnter;
-import com.xgc.rpn.user.userenter.UserEnterImpl;
 
 import java.io.InputStream;
 import java.util.EmptyStackException;
@@ -23,24 +21,18 @@ public class RpnCalculator {
     private static final int ONE = 1;
     private UserEnter userEnter;
     private Container container;
-    private OperateFactory operateFactory;
 
     public RpnCalculator() {
         this(System.in);
     }
 
-    public RpnCalculator(InputStream in) {
+    private RpnCalculator(InputStream in) {
         if (null == in) {
             throw new IllegalArgumentException("InputStream cannot be null!");
         }
 
-        this.userEnter = new UserEnterImpl(in);
+        this.userEnter = new UserEnter(in);
         this.container = new ContainerImpl();
-        this.operateFactory = new OperateFactory();
-    }
-
-    public OperateFactory getOperateFactory() {
-        return operateFactory;
     }
 
     /**
@@ -50,10 +42,10 @@ public class RpnCalculator {
      * @Date 2020/8/16
      */
     public void doCalculate() {
-        List<UserAction> userActions = null;
+        List<Action> userActions = null;
         AtomicInteger counter = new AtomicInteger(ONE);
         while( null != (userActions = this.userEnter.getUserInput())) {
-            for(UserAction e : userActions) {
+            for(Action e : userActions) {
                 try {
                     e.execute(this.container);
                     counter.incrementAndGet();
@@ -73,7 +65,7 @@ public class RpnCalculator {
      * @author xgc
      * @Date 2020/8/16
      */
-    private String formatErrorMessage(UserAction e, int counter) {
+    private String formatErrorMessage(Action e, int counter) {
         return e.getEmptyStackErrorMessage(counter);
     }
 }

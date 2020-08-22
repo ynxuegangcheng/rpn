@@ -2,7 +2,7 @@ package com.xgc.rpn.Calculator.operate;
 
 import com.xgc.rpn.Calculator.operate.record.OperateRecord;
 import com.xgc.rpn.Calculator.operate.enums.OperatorsEnum;
-import com.xgc.rpn.user.useraction.UserAction;
+import com.xgc.rpn.Calculator.action.Action;
 import com.xgc.rpn.Calculator.container.Container;
 
 import java.util.Arrays;
@@ -14,7 +14,7 @@ import java.util.List;
  * @author xgc
  * @Date 2020/8/16
  */
-public class SquareRoot implements UserAction {
+public class SquareRoot implements Action {
 
     @Override
     public void execute(Container container) {
@@ -22,7 +22,7 @@ public class SquareRoot implements UserAction {
         if (first >= 0) {
             double result = Math.sqrt(first);
             container.pushNum(result);
-            OperateRecord record = this.getOperationRecord(first);
+            OperateRecord record = getOperationRecord(first);
             container.pushOperateRecord(record);
         }
         else {
@@ -37,7 +37,7 @@ public class SquareRoot implements UserAction {
      * @author xgc
      * @Date 2020/8/16
      */
-    public OperateRecord getOperationRecord(double digit) {
+    private OperateRecord getOperationRecord(double digit) {
         List<Double> params = Arrays.asList(digit);
         return new OperateRecord(params, this);
     }
